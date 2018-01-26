@@ -1,0 +1,22 @@
+main.py:6: ExtDeprecationWarning: Importing flask.ext.restful is deprecated, use flask_restful instead.
+  from flask.ext.restful import Api
+Traceback (most recent call last):
+  File "main.py", line 17, in <module>
+    app.run(debug = False)
+  File "/root/.virtualenvs/love_spider/lib/python3.5/site-packages/flask/app.py", line 841, in run
+    run_simple(host, port, self, **options)
+  File "/root/.virtualenvs/love_spider/lib/python3.5/site-packages/werkzeug/serving.py", line 814, in run_simple
+    inner()
+  File "/root/.virtualenvs/love_spider/lib/python3.5/site-packages/werkzeug/serving.py", line 774, in inner
+    fd=fd)
+  File "/root/.virtualenvs/love_spider/lib/python3.5/site-packages/werkzeug/serving.py", line 666, in make_server
+    passthrough_errors, ssl_context, fd=fd)
+  File "/root/.virtualenvs/love_spider/lib/python3.5/site-packages/werkzeug/serving.py", line 577, in __init__
+    self.address_family), handler)
+  File "/usr/lib/python3.5/socketserver.py", line 440, in __init__
+    self.server_bind()
+  File "/usr/lib/python3.5/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/usr/lib/python3.5/socketserver.py", line 454, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use
