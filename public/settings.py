@@ -11,13 +11,13 @@ CONFIG_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 DATA_HOST = '120.77.43.52'
 DATA_USER = 'root'
-DATA_PASSWORD = '093847'
+DATA_PASSWORD = ''
 DATA_DB = 'lovearrive'
 DATA_CHARSET = 'utf8'
 
 DATA_HOST_PD= '123.207.41.119'
 DATA_USER_PD = 'root'
-DATA_PASSWORD_PD = '093847'
+DATA_PASSWORD_PD = ''
 DATA_DB_PD = 'lovearrive'
 DATA_CHARSET_PD = 'utf8'
 
