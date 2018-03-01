@@ -5,13 +5,14 @@ __time__ = '2018/1/17 15:47'
 from flask import Flask
 from flask.ext.restful import Api
 
-from api.commodity.search import SearchAPI
+from api.commodity.search import SearchAPI, AssociateApi
 
 app = Flask(__name__)
 api_fast = Api(app)
 
 
 api_fast.add_resource(SearchAPI, '/search/api/')
+api_fast.add_resource(AssociateApi, '/associate/api/')
 
 if __name__ == '__main__':
     app.run(debug=True)
