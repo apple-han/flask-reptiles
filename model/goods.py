@@ -54,7 +54,6 @@ class Goods(Base):
         """
             从数据库获取商品信息
         :param size: 一次获取多少个
-        :param status: 1 获取有效期内的商品 0 获取过期商品
         :return:
         """
         from apple import app

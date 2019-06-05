@@ -140,6 +140,7 @@ def save_to_store(search_map):
             os_path.write_file(file_map.get('file_path'), str(id) + '-')
         else:
             return False
+
 class SearchParticiple(object):
     '''
     分词工具类
@@ -155,7 +156,7 @@ class SearchParticiple(object):
     def db_split(self):
         '''
         拆分数据库字段：
-            id,title,goods_brief
+            id,title
         :return:
         '''
         this_page = 0
