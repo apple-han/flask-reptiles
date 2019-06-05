@@ -1,2 +1,2 @@
 # flask-reptiles
-flask+request+主从同步 打造最强搜索
+flask+request 打造最强搜索
