@@ -18,8 +18,6 @@ def get_user_agent():
 
 def fetch(url, proxy=None):
     s = requests.Session()
-    s.headers.update({'user_agent': get_user_agent()})
-
     proxies = None
     if proxy is not None:
         proxies = {

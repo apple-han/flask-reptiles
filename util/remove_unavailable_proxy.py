@@ -12,13 +12,10 @@ pool = Pool(10)
 
 def check_proxy(p):
     try:
-        print(p)
         fetch('http://baidu.com', proxy=p['ip'])
     except RequestException as e:
-        print(e)
         CouponDB().delete_ip(p['id'])
 
 #print(CouponDB().sumip())
 pool.map(check_proxy, CouponDB().sumip())
 
-print(CouponDB().count_ip())

@@ -33,7 +33,6 @@ class MostBase(object):
                 cursor.execute(sql, execute_data)
             self.connection.commit()
         except Exception as e:
-            print(e)
             self.log.info(e)
             self.connection.rollback()
     def close(self):

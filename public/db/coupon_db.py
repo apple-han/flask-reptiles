@@ -59,7 +59,6 @@ class CouponDB(DataBase_PD):
         delete_sql = """
                     DELETE FROM goods_getip WHERE id = {0}
                 """
-        print(delete_sql.format(getip))
         return self.execute(delete_sql.format(getip))
 
     def sumip(self):

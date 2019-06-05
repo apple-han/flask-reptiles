@@ -1,13 +1,16 @@
 import time
 import re
 import os
+from collections import Counter
+
+from model.goods import Goods
 
 import jieba
 
 from public import log
-from public.db.search_db import SearchDB
 from public.settings import (SEARCH_PARTICIPLE_PATH, SEARCH_PARTICIPLE_FILE_NAME,
                              SEARCH_PARTICIPLE_SIZE)
+
 from util import os_path
 
 FILTER = re.compile(r"[\~\`\!\@\#\$%\^\&\*\(\)\_\-\+\=\{\[\}\]\|\\\:\;\"\'\<\,\>\.\?\/·！￥…（）【】、“”‘’：；，。？★◆]")
@@ -72,22 +75,16 @@ def split_result(r, re_filter):
     :param re_filter:
     :return:
     '''
-    title = r.get('title')
-    dsc = r.get('goods_desc')
+    title = r[1]
     title = re.sub(re_filter,' ', title)
-    dsc = re.sub(re_filter,' ', dsc)
 
     titles1 = jieba.lcut_for_search(title)
     titles3 = jieba.lcut(title, cut_all=True)
     titles = titles1 + titles3
 
-    dscs1 = jieba.lcut_for_search(dsc)
-    dscs3 = jieba.lcut(dsc, cut_all=True)
-    types = dscs1 + dscs3
-
-    jbs = set(titles + types)
+    jbs = set(titles)
     search_map = dict()
-    search_map['id'] = r.get('id')
+    search_map['id'] = r[0]
     search_map['result'] = list()
 
     if '' in jbs:
@@ -100,6 +97,32 @@ def split_result(r, re_filter):
         if flag:
             search_map['result'].append(result)
     return search_map
+
+
+def split_name(name):
+    '''
+    把搜索的条件进行拆分
+    :param name:
+    :return:
+    '''
+    name = jieba.lcut_for_search(name)
+    return name
+
+def require_ids(result, ids=[], sid=""):
+    for r in result:
+        codes = chinese_to_number(r)
+        if codes[0]:
+            files = splicing_path(codes[1])
+            file_list = os_path.read_file_to_search(files.get('file_path'))
+            if file_list:
+                ids += file_list
+    # 按照出现的次数排序
+    store_ids = Counter(ids)
+    total_ids = store_ids.most_common()
+    for si in total_ids:
+        sid = sid + si[0] + ','
+    return sid.split(",")[:-1]
+
 def save_to_store(search_map):
     '''
     把每个商品的关键词保存到本地
@@ -126,8 +149,6 @@ class SearchParticiple(object):
     '''
 
     def __init__(self):
-        self.search_db = SearchDB()
-        log.logging.info('[INFO] Search init success')
         # 过滤垃圾字符
         self.filter = FILTER
 
@@ -140,7 +161,7 @@ class SearchParticiple(object):
         this_page = 0
         page_size = 500
         while True:
-            results = self.search_db.find_commoditys(this_page, page_size)
+            results = Goods.find_commoditys(this_page, page_size)
             if results:
                 this_page = this_page + page_size
                 for r in results:

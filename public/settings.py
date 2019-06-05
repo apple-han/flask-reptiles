@@ -29,16 +29,7 @@ BANTANG_SLEEP  = 1200
 
 # 感谢代理提供商
 PROXY_SITES = [
-    'http://www.proxylists.net/?HTTP',
-    # 'http://cn-proxy.com',
-    # 'http://www.xicidaili.com',
-    # 'http://www.kuaidaili.com/free',
-    # 'http://www.proxylists.net/?HTTP',
-    # # www.youdaili.net的地址随着日期不断更新
-    # 'http://www.youdaili.net/Daili/http/4565.html',
-    # 'http://www.youdaili.net/Daili/http/4562.html',
-    # 'http://www.kuaidaili.com',
-    # 'http://proxy.mimvp.com',
+    'http://www.xicidaili.com',
 ]
 
 REFERER_LIST = [
@@ -50,9 +41,9 @@ REFERER_LIST = [
 # 匹配ip地址的正则
 PROXY_REGEX = re.compile('[0-9]+(?:\.[0-9]+){3}:\d{2,4}')
 
-# 匹配西祠代理的ip
-
 TIMEOUT = 5
+
+
 
 
 ###########################################

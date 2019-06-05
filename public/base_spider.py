@@ -16,8 +16,7 @@ class BaseSpider(object):
     爬虫的基类思密达
     '''
     def __init__(self):
-        self.re_id = re.compile(r'(.*)g/(\d{1,3})(.*)')
-        self.coupon_db = CouponDB()
+        self.re_id = re.compile(r'(.*)g/(\d{1,4})(.*)')
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
         }

@@ -17,21 +17,15 @@ class Coupon(object):
         self.title = None
         # 商品的价格
         self.price = None
-        # 商品的分类
-        self.category_id = None
         # 商品的url
         self.url = None
         # 商品的图片
-        self.pic = None
-        # 商品的描述
-        self.goods_desc = None
-        # 商品的品牌名
-        self.brand = None
+        self.thumbnail_pic = None
 
     def __str__(self):
         return '(Coupon: %s,%s,%s, %s, %s, %s, %s, %s,%s)' % (self.title, self.price,
-                                                     self.category_id,self.second_id,self.first_id, self.url,
-                                                     self.pic,self.brand,self.goods_desc)
+                                                     self.second_id,self.first_id, self.url,
+                                                     self.thumbnail_pic)
 
 
 class Page(object):
