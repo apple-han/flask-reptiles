@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 import os
 import logging.config
+
+from logging.handlers import RotatingFileHandler
+
 import datetime
 from public.settings import CONFIG_DIR
 
@@ -18,10 +21,15 @@ def start_log(file_path):
 
     LOGGING_CONF_FILE = os.path.join(log_path, str(result_day[2]) + ".log")
 
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s %(pathname)s [line:%(lineno)d] %(levelname)s %(message)s',
-        datefmt='%a, %d %b %Y %H:%M:%S',
-        filename=LOGGING_CONF_FILE,
-        filemode='a'
-    )
+    format = logging.Formatter('%(asctime)s %(pathname)s [line:%(lineno)d] %(levelname)s %(message)s')
+
+    level = logging.INFO
+
+    log = logging.getLogger()
+    handler = RotatingFileHandler(LOGGING_CONF_FILE, maxBytes=1024*1024*1024, backupCount=40)
+    handler.setFormatter(format)
+    
+    log.addHandler(handler)
+    log.setLevel(level)
+
+

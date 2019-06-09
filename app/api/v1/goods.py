@@ -26,6 +26,7 @@ def search():
     ids = require_ids(result)
     # 查询数据返回对象
     pg = Goods.find_commoditys_by_ids(ids, int(pageNo), collation)
+
     r = dict(code=0, result=dict(
         items=[i for i in pg.items],
         total=pg.total,
