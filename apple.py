@@ -9,7 +9,7 @@ from app.help.error_code import ServerError
 
 app = create_app()
 
-
+# AOP Flask 1.0
 @app.errorhandler(Exception)
 def framework_error(e):
     if isinstance(e, APIException):
