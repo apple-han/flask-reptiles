@@ -1,32 +1,27 @@
 # -*- coding: utf-8 -*-
+from header_pool import user_agent
+
 __author__ = '__apple'
 __time__ = '2018/1/18 15:10'
 
 import random
 
 import requests
-from fake_useragent import UserAgent
+from public.settings import TIMEOUT
 
-from public.settings import REFERER_LIST, TIMEOUT
-
-def get_referer():
-    return random.choice(REFERER_LIST)
-
-def get_user_agent():
-    ua = UserAgent()
-    return ua.random
 
 def fetch(url):
+    # 获取随机的代理
     proxy = require_proxy()
-
-    print("proxy---->", proxy)
+    # 随机的header
+    headers = {'User-Agent': random.choice(user_agent)}
     s = requests.Session()
     proxies = None
     if proxy is not None:
         proxies = {
             'http': proxy,
         }
-    return s.get(url, timeout=TIMEOUT, proxies=proxies)
+    return s.get(url, timeout=TIMEOUT, proxies=proxies, headers=headers)
 
 # 获取proxy require_proxy
 def require_proxy():
