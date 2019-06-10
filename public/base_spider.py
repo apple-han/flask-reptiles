@@ -65,7 +65,7 @@ class BaseSpider(object):
         :return:
         """
         result = re.search(self.re_id, url)
-        if len(result.groups()) > 0:
+        if result and len(result.groups()) > 0:
             return result.group(2)
         else:
             return None

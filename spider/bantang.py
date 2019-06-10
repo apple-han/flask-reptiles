@@ -6,6 +6,8 @@
 import urllib
 import random
 import json
+from enum import IntEnum
+
 from lxml import etree
 
 from requests.exceptions import RequestException
@@ -16,6 +18,8 @@ from public.model import Coupon
 from model.goods import Goods
 from util.getIp import fetch
 
+class CouponList(IntEnum):
+    ZERO = 0
 
 class BanTang(BaseSpider):
     def __init__(self):
@@ -66,6 +70,7 @@ class BanTang(BaseSpider):
         for rc in childs[::-1]:
             log.logging.info('[INFO] Get url: {0} >>> {1}'.format(rc.attrib['href'], rc.text))
             url = urllib.parse.urljoin(url, rc.attrib['href'])
+            print(url)
             self.second_id = self.get_id_for_url(url)
             self.get_coupon_info(urllib.parse.urljoin(url, rc.attrib['href']), self.second_id)
 
@@ -78,19 +83,14 @@ class BanTang(BaseSpider):
         '''
         page = 0
         while True:
+            print(self.get_url.format(id=second_id, page=page))
             try:
                 resp = fetch(self.get_url.format(id=second_id, page=page))
             except RequestException as e:
                 resp = fetch(self.get_url.format(id=second_id, page=page))
-                log.logging.info('[warn] ineffective:{0}'.format(e))
-            time.sleep(10)
-            try:
-                resp2 = fetch(self.get_url.format(id=second_id, page=page+1))
-            except RequestException as e:
-                resp2 = fetch(self.get_url.format(id=second_id, page=page+1))
                 log.logging.info('[warn] ineffective:{0}'.format(e))
 
-            if resp.text == resp2.text:
+            if len(resp.json().get('data')['coupon_list']) == CouponList.ZERO:
                 log.logging.info('[INFO] Get {0} success'.format(second_id))
                 break
             else:
@@ -99,6 +99,7 @@ class BanTang(BaseSpider):
                         if resp.json().get('data'):
                             log.logging.info('[INFO]page {0}'.format(page))
                             coupon = Coupon()
+                            print(resp.json().get('data'))
                             for info in resp.json().get('data')['coupon_list']:
                                 coupon.second_id = self.second_id
                                 coupon.first_id = self.first_id

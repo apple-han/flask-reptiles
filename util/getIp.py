@@ -16,7 +16,10 @@ def get_user_agent():
     ua = UserAgent()
     return ua.random
 
-def fetch(url, proxy=None):
+def fetch(url):
+    proxy = require_proxy()
+
+    print("proxy---->", proxy)
     s = requests.Session()
     proxies = None
     if proxy is not None:
@@ -24,3 +27,13 @@ def fetch(url, proxy=None):
             'http': proxy,
         }
     return s.get(url, timeout=TIMEOUT, proxies=proxies)
+
+# 获取proxy require_proxy
+def require_proxy():
+    from proxypool.setting import PROXY_POOL_URL
+    try:
+        response = requests.get(PROXY_POOL_URL)
+        if response.status_code == 200:
+            return response.text
+    except ConnectionError:
+        return None
