@@ -43,7 +43,8 @@ PROXY_REGEX = re.compile('[0-9]+(?:\.[0-9]+){3}:\d{2,4}')
 
 TIMEOUT = 5
 
-
+# links.bin的项目路径
+LINKS_BIN = os.path.join(CONFIG_DIR, "links.bin")
 
 
 ###########################################

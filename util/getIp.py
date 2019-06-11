@@ -32,3 +32,6 @@ def require_proxy():
             return response.text
     except ConnectionError:
         return None
+
+if __name__ == "__main__":
+    print(fetch("https://www.baidu.com/"))

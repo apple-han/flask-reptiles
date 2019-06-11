@@ -6,6 +6,7 @@ import os
 import re
 
 
+
 def get_this_path(file):
     pass
 
@@ -49,6 +50,16 @@ def write_file(file_path, content):
     return True
 
 
+def write_links(file_path, content):
+    """
+    :file_path: 文件路径
+    :return:
+    """
+    write_type = "a"
+    content = "%s\n"%content
+    with open(file_path, write_type) as f:
+        f.write(content)
+
 def is_has_folder(folder_path):
     """
     判断一个路径是不是存在一个文件夹
@@ -87,7 +98,15 @@ def read_file_to_search(file_path):
     else:
         return False
 
-
+def read_file_to_url(file_path):
+    """
+    获取文件中的url
+    :param file_path:
+    :return:
+    """
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+        return lines
 
 
 
@@ -113,4 +132,15 @@ def is_has_file(file_path):
 
 
 def get_file_size(file_path):
-    pass
+    size = os.path.getsize(file_path)
+    if size == 0:
+        return True
+
+def delete_line(file_path, content):
+    with open(file_path, 'r') as r:
+        lines = r.readlines()
+    with open(file_path, 'w') as w:
+        for l in lines:
+            if content not in l:
+                w.write(l)
+    return True
