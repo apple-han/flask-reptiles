@@ -26,7 +26,7 @@ store/
 *.egg-info/
 .installed.cfg
 *.egg
-*.imi
+*.iml
 .deal
 # PyInstaller
 #  Usually these files are written by a python script from a template

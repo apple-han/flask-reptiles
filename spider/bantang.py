@@ -86,12 +86,9 @@ class BanTang(BaseSpider):
         """
         # 获取links.bin中的url
         urls = read_file_to_url(LINKS_BIN)
-        print("urls--->",urls)
         for url in urls:
             m = url.replace("\n", "").split("-")
             url = m[0]
-
-            print("url---->",url)
             first_id = m[1]
             second_id = self.get_id_for_url(url)
             page = 0
@@ -130,7 +127,6 @@ class BanTang(BaseSpider):
                     else:
                         log.logging.info('[ERROR] resp is None')
             # 一条url处理完成以后, 从文件中删除
-            print("url---->",url)
             delete_line(LINKS_BIN, url)
 
 
