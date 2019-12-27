@@ -9,6 +9,7 @@ from app.help.error_code import ServerError
 
 app = create_app()
 
+
 # AOP Flask 1.0
 @app.errorhandler(Exception)
 def framework_error(e):
@@ -25,5 +26,6 @@ def framework_error(e):
         else:
             raise e
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=app.config['DEBUG'])

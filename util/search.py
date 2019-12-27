@@ -7,9 +7,9 @@ from model.goods import Goods
 
 import jieba
 
-from public import log
-from public.settings import (SEARCH_PARTICIPLE_PATH, SEARCH_PARTICIPLE_FILE_NAME,
-                             SEARCH_PARTICIPLE_SIZE)
+from base import log
+from config.config import (SEARCH_PARTICIPLE_PATH, SEARCH_PARTICIPLE_FILE_NAME,
+                           SEARCH_PARTICIPLE_SIZE)
 
 from util import os_path
 
@@ -17,7 +17,7 @@ FILTER = re.compile(r"[\~\`\!\@\#\$%\^\&\*\(\)\_\-\+\=\{\[\}\]\|\\\:\;\"\'\<\,\>
 
 
 def chinese_to_number(chinese):
-    '''
+    """
     把中文字符转换为如下格式：
         中国（20013， 22269）
     英文字符转化为小写返回：
@@ -27,7 +27,7 @@ def chinese_to_number(chinese):
         T恤（116,24676）
     :param chinese: 需要转化的字符
     :return:
-    '''
+    """
     if isinstance(chinese, str):
         chinese = chinese.strip()
         chinese = chinese.replace('\\', '').replace('/', '')
@@ -40,14 +40,15 @@ def chinese_to_number(chinese):
         else:
             return False, codes
     else:
-        return False,None
+        return False, None
+
 
 def splicing_path(file_codes):
-    '''
+    """
     把ascii形式的关键字，拼装成路径
     :param file_codes: [38889,29256]
     :return: 文件夹路径，文件路径
-    '''
+    """
 
     file_map = dict()
     if file_codes:
@@ -56,7 +57,7 @@ def splicing_path(file_codes):
         folder_path = ""
         file_path = ''
         for file_code in file_codes:
-            folder_path =str(file_code) if file_path == '' else folder_path + os.sep + str(file_code)
+            folder_path = str(file_code) if file_path == '' else folder_path + os.sep + str(file_code)
             file_path = str(file_code) if file_path == "" else file_path + '-' + str(file_code)
 
         # 拼装路径
@@ -68,15 +69,16 @@ def splicing_path(file_codes):
     else:
         return False
 
+
 def split_result(r, re_filter):
-    '''
+    """
     拆分关键词
     :param r:
     :param re_filter:
     :return:
-    '''
+    """
     title = r[1]
-    title = re.sub(re_filter,' ', title)
+    title = re.sub(re_filter, ' ', title)
 
     titles1 = jieba.lcut_for_search(title)
     titles3 = jieba.lcut(title, cut_all=True)
@@ -100,13 +102,14 @@ def split_result(r, re_filter):
 
 
 def split_name(name):
-    '''
+    """
     把搜索的条件进行拆分
     :param name:
     :return:
-    '''
+    """
     name = jieba.lcut_for_search(name)
     return name
+
 
 def require_ids(result, ids=[], sid=""):
     for r in result:
@@ -123,12 +126,13 @@ def require_ids(result, ids=[], sid=""):
         sid = sid + si[0] + ','
     return sid.split(",")[:-1]
 
+
 def save_to_store(search_map):
-    '''
+    """
     把每个商品的关键词保存到本地
     :param search_map:
     :return:
-    '''
+    """
     id = search_map.get('id')
     result = search_map.get('result')
     for r in result:
@@ -141,24 +145,25 @@ def save_to_store(search_map):
         else:
             return False
 
+
 class SearchParticiple(object):
-    '''
+    """
     分词工具类
         1.从数据库获取一定量的数据
         2.拆分关键词
         3，保存关键词
-    '''
+    """
 
     def __init__(self):
         # 过滤垃圾字符
         self.filter = FILTER
 
     def db_split(self):
-        '''
+        """
         拆分数据库字段：
             id,title
         :return:
-        '''
+        """
         this_page = 0
         page_size = 500
         while True:
@@ -171,6 +176,7 @@ class SearchParticiple(object):
                     log.logging.info('[INFO] save to store {0}'.format(search_map['id']))
             else:
                 break
+
 
 def start_participle():
     start_time = time.time()
