@@ -33,10 +33,12 @@ TIMEOUT = 5
 # 一页多少条数据
 PER_PAGE = 10
 
-DEBUG = False
+DEBUG = True
 
 # links.bin的项目路径
 LINKS_BIN = os.path.join(CONFIG_DIR, "links.text")
+
+UPLOAD_PATH = os.path.join(CONFIG_DIR, "image")
 
 
 ###########################################
