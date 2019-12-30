@@ -1,5 +1,6 @@
 # flask-reptiles
 相信这个项目，对于学习用flask开发web你来说，帮助是巨大的。
+抓紧试试这个分词+web的组合吧！
 ### 安装（python version > 3.6）运行时注意你使用的版本
     git clone https://github.com/apple-han/flask-reptiles.git
     cd flask-reptiles
