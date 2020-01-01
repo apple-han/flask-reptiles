@@ -7,19 +7,8 @@ from app import create_app
 from app.help.error import APIException
 from app.help.error_code import ServerError
 
-from pathlib import Path
-
-# 如果没有 image 目录就创建
-base_dir = Path(__file__).parent
-image_dir = Path.joinpath(base_dir, 'image')
-
-if not Path.exists(image_dir):
-    Path.mkdir(image_dir)
-
-
 app = create_app()
-# 兼容 windows 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 # AOP Flask 1.0
 @app.errorhandler(Exception)
