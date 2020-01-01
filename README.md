@@ -4,7 +4,6 @@
 ### 安装（python version > 3.6）运行时注意你使用的版本
     git clone https://github.com/apple-han/flask-reptiles.git
     cd flask-reptiles
-    mkdir image
     pip install -r requirements.txt 
     python apple.py
     python proxy.py
