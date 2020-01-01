@@ -99,7 +99,7 @@ ENV/
 
 # mkdocs documentation
 /site
-
+image/*
 # mypy
 .mypy_cache/
 
