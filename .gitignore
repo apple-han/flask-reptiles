@@ -104,3 +104,5 @@ ENV/
 .mypy_cache/
 
 
+# vscode
+.vscode/

@@ -18,7 +18,8 @@ if not Path.exists(image_dir):
 
 
 app = create_app()
-
+# 兼容 windows 
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # AOP Flask 1.0
 @app.errorhandler(Exception)
