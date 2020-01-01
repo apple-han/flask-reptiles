@@ -41,6 +41,6 @@ virtualenv==16.7.2
 virtualenv-clone==0.5.3
 virtualenvwrapper==4.8.4
 Werkzeug==0.15.4
-wrapt==1.11.2
+wrapt # 确定版本在 windows 平台找不到
 WTForms==2.2.1
 yarl==1.4.2

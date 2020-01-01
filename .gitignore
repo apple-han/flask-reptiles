@@ -104,3 +104,5 @@ image/*
 .mypy_cache/
 
 
+# vscode
+.vscode/
