@@ -27,6 +27,12 @@ class ParameterException(APIException):
     error_code = 1000
 
 
+class UploadException(APIException):
+    code = 400
+    msg = 'upload image fail please try again!'
+    error_code = 1007
+
+
 class NotFound(APIException):
     code = 404
     msg = 'the resource are not found O__O...'
@@ -36,6 +42,10 @@ class NotFound(APIException):
 class Forbidden(APIException):
     code = 403
     error_code = 1004
-    msg = 'forbidden, not in scope'
+    msg = 'forbidden, sorry'
 
 
+class AuthFailed(APIException):
+    code = 401
+    error_code = 1005
+    msg = 'authorization failed'

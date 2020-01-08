@@ -44,3 +44,6 @@ Werkzeug==0.15.4
 wrapt # 确定版本在 windows 平台找不到
 WTForms==2.2.1
 yarl==1.4.2
+flask-httpauth==3.3.0
+
+

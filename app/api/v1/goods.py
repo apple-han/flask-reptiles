@@ -1,19 +1,19 @@
 # @Time    : 2019-06-01 08:01
 # @Author  : __apple
 
-import json
-import os
 
 from flask import jsonify
 from app.help.redprint import Redprint
 from app.validators.forms import GoodsSearchForm
 from model.goods import Goods
 from util.search import split_name, require_ids
+from util.valid_token import auth
 
 api = Redprint('goods')
 
 
 @api.route("/search")
+@auth.login_required
 def search():
     # 验证参数
     form = GoodsSearchForm().validate_for_api()

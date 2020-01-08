@@ -121,9 +121,9 @@ class BanTang(BaseSpider):
                                         log.logging.info('[INFO] {0} is existed'.format(coupon.title))
                                 page += 1
                             else:
-                                log.logging.info('[ERROR] {0}'.format(resp.text))
+                                log.logging.error('[ERROR] {0}'.format(resp.text))
                         except Exception as e:
-                            log.logging.info('[ERROR] {0}'.format(e))
+                            log.logging.error('[ERROR] {0}'.format(e))
                     else:
                         log.logging.info('[ERROR] resp is None')
             # 一条url处理完成以后, 从文件中删除

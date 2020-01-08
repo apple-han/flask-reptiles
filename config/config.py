@@ -26,6 +26,8 @@ REFERER_LIST = [
     'http://www.baidu.com/',
 ]
 
+EXPIRE = 15 * 24 * 3600
+
 # 匹配ip地址的正则
 PROXY_REGEX = re.compile('[0-9]+(?:\.[0-9]+){3}:\d{2,4}')
 
@@ -53,6 +55,7 @@ SEARCH_PARTICIPLE_FILE_NAME = 'search.big'
 
 # 一个文件夹放多少个分词文件夹
 SEARCH_PARTICIPLE_SIZE = 500
+
 
 
 # 数据库相关, 设置密码, 手动创建数据库
