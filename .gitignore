@@ -15,6 +15,7 @@ dist/
 downloads/
 eggs/
 .eggs/
+.execute.sh.swp
 lib/
 log/
 lib64/
@@ -106,3 +107,4 @@ image/*
 
 # vscode
 .vscode/
+/data

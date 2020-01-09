@@ -4,8 +4,7 @@
 # '''
 # 配置文件
 # '''
-import os
-import re
+import os,re
 # 项目的根目录
 CONFIG_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
@@ -59,7 +58,7 @@ SEARCH_PARTICIPLE_SIZE = 500
 
 
 # 数据库相关, 设置密码, 手动创建数据库
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@localhost/products'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@192.168.1.135/products'
 
 SECRET_KEY = '\x88D\xf09\x91\x07\x98\x89\x87\x96\xa0A\xc68\xf9\xecJ:U\x17\xc5V\xbe\x8b\xef\xd7\xd8\xd3\xe6\x98*4'
 
