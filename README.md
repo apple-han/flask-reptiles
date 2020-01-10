@@ -5,7 +5,6 @@
 - git clone https://github.com/apple-han/flask-reptiles.git
 - cd flask-reptiles
 - 在 config/config.py 中手动更改 `mysql` 的密码(`SQLALCHEMY_DATABASE_URI`), 并创建数据库 `CREATE DATABASE products CHARSET=UTF8` 
-- uwsgi.ini 改成你自己的文件路径，注意module也要改！
 ### Docker的方式部署
 - docker build . -t reptiles-srv:latest
 - docker-compose up -d
