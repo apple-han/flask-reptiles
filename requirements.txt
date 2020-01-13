@@ -1,6 +1,7 @@
 aiohttp==3.6.2
 async-timeout==3.0.1
 attrs==19.3.0
+autopep8==1.4.4
 certifi==2019.11.28
 chardet==3.0.4
 Click==7.0
@@ -9,6 +10,7 @@ Flask==1.1.1
 Flask-HTTPAuth==3.3.0
 Flask-SQLAlchemy==2.4.1
 idna==2.8
+isort==4.3.21
 itsdangerous==1.1.0
 jieba==0.41
 Jinja2==2.10.3
