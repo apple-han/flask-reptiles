@@ -38,7 +38,7 @@ DEBUG = True
 
 # links.bin的项目路径
 LINKS_BIN = os.path.join(CONFIG_DIR, "links.text")
-
+# 图片的上传路径
 UPLOAD_PATH = os.path.join(CONFIG_DIR, "image")
 
 
@@ -55,12 +55,29 @@ SEARCH_PARTICIPLE_FILE_NAME = 'search.big'
 # 一个文件夹放多少个分词文件夹
 SEARCH_PARTICIPLE_SIZE = 500
 
-
-
-# 数据库相关, 设置密码, 手动创建数据库
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@192.168.31.231/products'
+###########################################
+#                   数据库相关              #
+###########################################
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@192.168.1.135/products'
 
 SECRET_KEY = '\x88D\xf09\x91\x07\x98\x89\x87\x96\xa0A\xc68\xf9\xecJ:U\x17\xc5V\xbe\x8b\xef\xd7\xd8\xd3\xe6\x98*4'
 
 # 兼容window
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+###########################################
+#                   Email 相关的            #
+###########################################
+MAIL_DEBUG = True
+MAIL_SERVER = "smtp.163.com"
+MAIL_PORT = 465
+MAIL_USE_SSL = True
+MAIL_USERNAME = 'applehango@163.com'
+MAIL_PASSWORD = 'zh123456'
+
+###########################################
+#                   Redis 相关的            #
+###########################################
+REDIS_URL = "127.0.0.1:6379"
+EXPIRE = 120
+

@@ -4,6 +4,11 @@ import sys
 from base import log
 from base.log import start_log
 from .app import Flask
+from flask_redis import FlaskRedis
+from flask_mail import Mail
+
+mail = Mail()
+redis_client = FlaskRedis()
 
 
 def register_blueprints(app):
@@ -25,9 +30,11 @@ def startup_log():
 
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder="../templates")
+    redis_client.init_app(app)
     app.config.from_object('config.config')
     register_blueprints(app)
     register_plugin(app)
     startup_log()
+    mail.init_app(app)
     return app
