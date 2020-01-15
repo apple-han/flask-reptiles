@@ -73,7 +73,7 @@ MAIL_SERVER = "smtp.163.com"
 MAIL_PORT = 465
 MAIL_USE_SSL = True
 MAIL_USERNAME = 'applehango@163.com'
-MAIL_PASSWORD = 'zh123456'
+MAIL_PASSWORD = '111111'
 
 ###########################################
 #                   Redis 相关的            #

@@ -6,6 +6,8 @@
 - cd flask-reptiles
 - base/proxypool/setting.py 修改redis的连接地址为本地的IP
 - config/config.py 中手动更改 `mysql` 连接信息
+- config/config.py 中手动更改 `email` 连接信息
+- config/config.py 中手动更改 `redis` 连接信息
 
 ### Docker的方式部署
 - docker build . -t reptiles-srv:latest
