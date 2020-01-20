@@ -25,5 +25,4 @@ uWSGI==2.0.18
 Werkzeug==0.16.0
 WTForms==2.2.1
 yarl==1.4.2
-
-
+flask_redis==0.4.0

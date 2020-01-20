@@ -58,7 +58,7 @@ SEARCH_PARTICIPLE_SIZE = 500
 ###########################################
 #                   数据库相关              #
 ###########################################
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@192.168.1.135/products'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@192.168.31.231/products'
 
 SECRET_KEY = '\x88D\xf09\x91\x07\x98\x89\x87\x96\xa0A\xc68\xf9\xecJ:U\x17\xc5V\xbe\x8b\xef\xd7\xd8\xd3\xe6\x98*4'
 
@@ -78,6 +78,6 @@ MAIL_PASSWORD = '111111'
 ###########################################
 #                   Redis 相关的            #
 ###########################################
-REDIS_URL = "127.0.0.1:6379"
+REDIS_URL = "192.168.31.231:6379"
 EXPIRE = 120
 
