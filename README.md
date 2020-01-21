@@ -12,7 +12,7 @@
 ### Docker的方式部署
 - docker build . -t reptiles-srv:latest
 - docker-compose up -d
-- http://127.0.0.1:5000/v1/goods/search?q=衣服还不错 (需要先获取token)
+- http://127.0.0.1:8848/v1/goods/search?q=衣服还不错
 ### 本地安装（python version > 3.6）运行时注意你使用的版本
 - CREATE DATABASE products CHARSET=UTF8
 - pip install -r requirements.txt 
